@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<playlist>
+  <songs>
+    <id>1</id>
+    <artist>Pieter</artist>
+    <title>Pieter2</title>
+    <year>2199</year>
+    <genre>koel</genre>
+    <time>23:59</time>
+    <file>Pieter_en_de_koele_mannen.mp3</file>
+  </songs>
+  <songs>
+    <id>2</id>
+    <artist>Pieter</artist>
+    <title>Pieter3</title>
+    <year>2210</year>
+    <genre>koel2</genre>
+    <time>23:58</time>
+    <file>Pieter_en_de_koele_mannen_2.mp3</file>
+  </songs>
+</playlist>
