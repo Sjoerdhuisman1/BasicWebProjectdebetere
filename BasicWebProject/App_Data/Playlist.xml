@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" standalone="yes"?>
-<playlist>
+<?xml version="1.0" standalone="yes"?>
+<Playlist>
   <songs>
     <id>1</id>
     <artist>Gerard Joling</artist>
@@ -36,5 +36,14 @@
     <time>3:38</time>
     <file>The Flexian_Bro_Before_Ho.mp3</file>
   </songs>
-
-</playlist>
+  <songs />
+  <songs>
+    <id>1</id>
+    <artist>1</artist>
+    <title>1</title>
+    <year>1</year>
+    <genre>1</genre>
+    <time>1</time>
+    <file>1</file>
+  </songs>
+</Playlist>
