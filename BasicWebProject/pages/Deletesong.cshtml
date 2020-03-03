@@ -32,5 +32,15 @@
             </tr>
         </table>
         </form>
+
+    @if (IsPost)
+    {
+        if (Request.Form["keuze"] == "ja")
+        {
+            string id = Request.QueryString["id"];
+            mySongMethodes.DeleteSong(id, file);
+        }
+        Response.Redirect(@"~/index.cshtml");
+    }
 </body>
 </html>
