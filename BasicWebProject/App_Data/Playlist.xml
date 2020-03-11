@@ -10,21 +10,12 @@
     <file>Gerard_Joling_shangri_la.mp3</file>
   </songs>
   <songs>
-    <id>2</id>
-    <artist>Tame Lmpala</artist>
-    <title>The Less I Know The Better</title>
-    <year>2015</year>
-    <genre>Hip-Hop/Rap</genre>
-    <time>2:59</time>
-    <file>Tame_Lmpala_Less_I_Know.mp3</file>
-  </songs>
-  <songs>
-    <id>3</id>
-    <artist>PinkGuy</artist>
-    <title>DORA THE EXPLORA</title>
-    <year>2017</year>
-    <genre>Hip-Hop/Rap</genre>
-    <time>2:25</time>
-    <file>Pinkguy_Dora_The_Explora.mp3</file>
+    <id>e</id>
+    <artist />
+    <title />
+    <year />
+    <genre />
+    <time />
+    <file />
   </songs>
 </Playlist>

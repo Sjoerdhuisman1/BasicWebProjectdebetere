@@ -17,18 +17,19 @@
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <script src="~/Scripts/bootstrap.js"></script>
     <script src="~/Scripts/jquery-3.0.0.js"></script>
+    <script src="https://kit.fontawesome.com/f19f1abdd8.js" crossorigin="anonymous"></script>
 </head>
 <body>
    
 
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
-            <h1 class="display-4">Hallo</h1>
-            <p class="lead">test</p>
+            <h1 class="display-4">C# Muziek Project</h1>
+            <p class="lead">Dit is ons C# project om nummers te kunnen toevoegen, verwijderen en afspelen</p>
         </div>
     </div>
 
-    <table class="table-bordered"  >
+    <table class="table table-bordered"  >
         <tr>
             <th>Id</th>
             <th>Artist</th>
@@ -49,8 +50,9 @@
         <td>@dr["genre"]</td>
         <td>@dr["time"]</td>
         <td>@dr["file"]</td>
+        <td><a href="~/pages/Deletesong.cshtml?id=@dr["id"]" class="fa fa-trash"></a></td>
         
-       <td> <a href="~/pages/Deletesong.cshtml?id=@dr["id"]">Verwijderen</a></td>
+      
     </tr>
         }
     </table>
