@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data;
-
+using System.Media;
 
 namespace BasicWebProject.App_Code
 {
@@ -18,14 +18,17 @@ namespace BasicWebProject.App_Code
 
         public void DeleteSong(string id, string file)
         {
+           
             DataRow[] drArray = ds.Tables["songs"].Select("id = '" + id + "'");
             if (drArray != null && drArray.Length > 0)
             {
                 drArray[0].Delete();
                 ds.WriteXml(HttpContext.Current.Server.MapPath(file));
+                
             }
         }
 
+      
         public void CreateSong(DataRow dataRow, string file)
         {
             ds.Tables["songs"].Rows.Add(dataRow);
