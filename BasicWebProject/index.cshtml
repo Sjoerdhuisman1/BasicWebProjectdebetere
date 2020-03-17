@@ -18,9 +18,11 @@
     <script src="~/Scripts/bootstrap.js"></script>
     <script src="~/Scripts/jquery-3.0.0.js"></script>
     <script src="https://kit.fontawesome.com/f19f1abdd8.js" crossorigin="anonymous"></script>
+    <script src="~/Scripts/Testdialog.js"></script>
+    <link rel="stylesheet" type="text/css" href="~/Content/dialog.css" />
 </head>
 <body>
-   
+
 
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
@@ -29,7 +31,8 @@
         </div>
     </div>
 
-    <table class="table table-bordered"  >
+   
+    <table class="table table-bordered">
         <tr>
             <th>Id</th>
             <th>Artist</th>
@@ -39,25 +42,31 @@
             <th>Time</th>
             <th>File</th>
         </tr>
-        
+
+
+
         @foreach (DataRow dr in ds.Tables["songs"].Rows)
         {
-    <tr>
-        <td>@dr["id"]</td>
-        <td>@dr["artist"]</td>
-        <td>@dr["title"]</td>
-        <td>@dr["year"]</td>
-        <td>@dr["genre"]</td>
-        <td>@dr["time"]</td>
-        <td>@dr["file"]</td>
-        <td><a href="~/pages/Deletesong.cshtml?id=@dr["id"]" class="fa fa-trash"></a></td>
-        
-      
-    </tr>
+            <tr>
+                <td>@dr["id"]</td>
+                <td>@dr["artist"]</td>
+                <td>@dr["title"]</td>
+                <td>@dr["year"]</td>
+                <td>@dr["genre"]</td>
+                <td>@dr["time"]</td>
+                <td>@dr["file"]</td>
+                <td><a href="~/pages/Deletesong.cshtml?id=@dr["id"]" id="delete" class="fa fa-trash"></a></td>
+
+
+            </tr>
         }
     </table>
     <br /><br />
-    <a href="pages/Createsong.cshtml">Een nieuwe song toevoegen</a>
+          <div id="createsong">
+              <a href="pages/Createsong.cshtml">Een nieuwe song toevoegen</a>
+          </div>
+    <br/><br/>
+   
 </body>
 
 </html>

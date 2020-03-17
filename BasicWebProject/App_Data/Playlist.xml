@@ -11,11 +11,11 @@
   </songs>
   <songs>
     <id>e</id>
-    <artist />
-    <title />
-    <year />
-    <genre />
-    <time />
-    <file />
+    <artist>e</artist>
+    <title>e</title>
+    <year>e</year>
+    <genre>e</genre>
+    <time>e</time>
+    <file>e</file>
   </songs>
 </Playlist>

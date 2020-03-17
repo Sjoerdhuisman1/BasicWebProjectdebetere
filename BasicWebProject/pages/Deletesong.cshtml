@@ -1,47 +1,51 @@
 ﻿<!Doctype html>
+<div id="container">
+    @using System.Data;
+    @using BasicWebProject.App_Code;
 
-@using System.Data;
-@using BasicWebProject.App_Code;
-
-@{
-    songMethodes mySongMethodes = Session["playlistClass"] as songMethodes;
-    string file = Session["file"] as string;
-}
-
-
-<html>
-
-<head>
-</head>
-<body>
-    <p>Weet nu zeker dat u dit wilt verwijderen?</p>
-    <br />
-    
-    <form method="POST">
-        <table>
-
-            <tr>
-                <td>Ja</td>
-                <td><input type="radio" name="keuze" value="ja" checked></td>
-            </tr>
-            <tr>
-                <td>Nee</td>
-                <td><input type="radio" name="keuze" value="nee"></td>
-            </tr>
-            <tr>
-                <td><input type="submit" name="submit" value="Verder"></td>
-            </tr>
-        </table>
-    </form>
-
-    @if (IsPost)
-    {
-        if (Request.Form["keuze"] == "ja")
-        {
-            string id = Request.QueryString["id"];
-            mySongMethodes.DeleteSong(id, file);
-        }
-        Response.Redirect(@"~/index.cshtml");
+    @{
+        songMethodes mySongMethodes = Session["playlistClass"] as songMethodes;
+        string file = Session["file"] as string;
     }
-</body>
+
+
+    <html>
+
+    <head>
+    </head>
+    <body>
+
+        <p>Weet nu zeker dat u dit wilt verwijderen?</p>
+        <br />
+
+        <form method="POST">
+            <table>
+
+                <tr>
+                    <td>Ja</td>
+                    <td><input type="radio" name="keuze" value="ja" checked></td>
+                </tr>
+                <tr>
+                    <td>Nee</td>
+                    <td><input type="radio" name="keuze" value="nee"></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" name="submit" value="Verder"></td>
+                </tr>
+            </table>
+        </form>
+
+        @if (IsPost)
+        {
+            if (Request.Form["keuze"] == "ja")
+            {
+                string id = Request.QueryString["id"];
+                mySongMethodes.DeleteSong(id, file);
+            }
+            Response.Redirect(@"~/index.cshtml");
+        }
+
+
+    </body>
 </html>
+</div>
