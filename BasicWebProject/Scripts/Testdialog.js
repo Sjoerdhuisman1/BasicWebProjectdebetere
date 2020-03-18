@@ -1,22 +1,32 @@
-﻿var dialog = document.getElementById("shdialog")
+﻿
+var dialog = document.getElementById("dialog")
 var footDialog = document.getElementById("ft_dialog")
 var headDialog = document.getElementById("hd_dialog_title")
 var contDialog = document.getElementById("cn_dialog")
 
 
-function fShowdmdialog(sWelke) {
-    dialog.style.top = '200px';
-    document.getElementById("overlay").style.display = "block";
 
-    if (sWelke == "inlog") {
-        headDialog.innerHTML = "Inloggen";
-        footDialog.innerHTML = "-Inlog-";
-        contDialog.innerHTML = document.getElementById("pieter").innerHTML;
+function CloseDialog() {
+    console.log("close de dialog ");
+    //document.getElementById("overlay").style.display = "none";
+    document.getElementById('dialog').style.top = '-500px';
+
+}
+
+function ShowDialog(sWelke) {
+    dialog.style.top = '200px';
+    //document.getElementById('overlay').style.display = 'block';
+
+    if (sWelke == 'inlog') {
+        // document.getElementById('contDialog').innerHTML = ;
+        contDialog.innerHTML = document.getElementById('content').innerHTML;
+        contDialog.style.height = "600px";
+     
+
 
     }
 }
 
-function fClosedmdialog() {
-    document.getElementById('shdialog').style.top = '-300px';
-    overlay.style.display = "none";
-}
+//object.innerHTML.src =
+
+
