@@ -1,30 +1,13 @@
 <?xml version="1.0" standalone="yes"?>
 <Playlist>
   <songs>
-    <id>GordonL</id>
-    <artist>GordonL</artist>
-    <title>GordonL</title>
-    <year>GordonL</year>
-    <genre>GordonL</genre>
-    <time>GordonL</time>
-    <file>GordonL</file>
+    <id>e</id>
+    <artist>e</artist>
+    <title>e</title>
+    <year>e</year>
+    <genre>e</genre>
+    <time>e</time>
+    <file>e</file>
   </songs>
-  <songs>
-    <id>1</id>
-    <artist>Gerard Joling</artist>
-    <title>Shanri La</title>
-    <year>1988</year>
-    <genre>Idk</genre>
-    <time>3:20</time>
-    <file>Gerard_Joling_shangri_la.mp3</file>
-  </songs>
-  <songs>
-    <id>Gordon</id>
-    <artist />
-    <title />
-    <year />
-    <genre />
-    <time />
-    <file />
-  </songs>
+  
 </Playlist>

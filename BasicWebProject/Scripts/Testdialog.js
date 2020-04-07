@@ -17,12 +17,19 @@ function ShowDialog(sWelke) {
     dialog.style.top = '200px';
     //document.getElementById('overlay').style.display = 'block';
 
-    if (sWelke == 'inlog') {
+    if (sWelke == 'toevoegen') {
         // document.getElementById('contDialog').innerHTML = ;
         contDialog.innerHTML = document.getElementById('content').innerHTML;
         contDialog.style.height = "600px";
-     
+        dialog.style.border = "1px solid black";
 
+
+
+    }
+
+    if (sWelke == 'delete') {
+        contDialog.innerHTML = document.getElementById('delete').innerHTML;
+        
 
     }
 }

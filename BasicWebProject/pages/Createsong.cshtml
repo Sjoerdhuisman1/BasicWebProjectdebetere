@@ -8,16 +8,10 @@
             songMethodes mySongMethodes = Session["playlistClass"] as songMethodes;
             string file = Session["file"] as string;
         }
-
-
         <html>
-
         <head>
-
-
         </head>
         <body>
-
             <form method="POST" id="hallo">
                 <table>
                     <tr>
@@ -53,7 +47,6 @@
                     </tr>
                 </table>
             </form>
-
             @if (IsPost)
             {
                 DataRow dr = mySongMethodes.GetEmptyDataRow();

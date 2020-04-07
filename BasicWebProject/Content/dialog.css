@@ -4,11 +4,20 @@
 
 table{
     background-color: lightgray;
-    
 }
 
 #content{
     display: none;
+}
+
+.demooi{
+    width: 30%;
+    margin-left:40%;  
+}
+
+#formdiv {
+    margin-left: 20%;
+    background-color: #e9ecef;
 }
 
 #test{
@@ -16,8 +25,6 @@ table{
     width: 250px;
     margin-left: 5%;
 }
-
-
 
 #createsong{
     background-color: lightgray;
@@ -33,23 +40,23 @@ table{
     position: fixed;
     left: calc(50vw - 200px);
     top: -450px;
-    height: 250px;
+    height: 320px;
     transition: top 0.8s;
-    width: 350px;
-    background-color: black;
+    width: 330px;
+    background-color: lightgray;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-    border: solid 1px black;
-    align-content:center;
-    
 }
-
 #closebtn {
     font-size: 25px;
     margin-left: auto;
     margin-top: 3px;
+}
+
+#delete{
+    display: none;
 }
 
 #overlay {
@@ -70,6 +77,7 @@ table{
     padding: 5px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+    
 }
 
 
@@ -79,19 +87,21 @@ table{
     height: 10em;
     color: black;
     font-size: 15px;
+    margin-left: 35px;
+    background-color: lightgray;
 }
 
 .ft_dialog {
-    display: flex;
+  
     flex-direction: row;
     background-color: rgb(104, 104, 129);
     color: white;
-    height: 3em;
-    padding: 0 0, 5em;
+    height: 250px;
+    padding: 20px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-    padding: 5px;
     font-size: 20px;
+    height: 37.8px;
 }
 
 nav  ul{
@@ -103,5 +113,4 @@ nav  ul{
 
 nav ul li {
     background-color: gray;
-
 }

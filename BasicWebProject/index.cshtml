@@ -2,6 +2,8 @@
 
 @using System.Data;
 @using BasicWebProject.App_Code;
+@using System.Media
+
 
 @{
     songMethodes mySongMethodes = new songMethodes();
@@ -9,6 +11,15 @@
     DataSet ds = mySongMethodes.GetAllSongs(file);
     Session["playlistClass"] = mySongMethodes;
     Session["file"] = file;
+
+
+    SoundPlayer player = new SoundPlayer();
+    player.SoundLocation = AppDomain.CurrentDomain.BaseDirectory + "\\Gerard-Joling-Shangri-La.wav";
+    player.Play();
+
+    
+   
+
 }
 
 <html>
@@ -48,17 +59,20 @@
                 <td>@dr["genre"]</td>
                 <td>@dr["time"]</td>
                 <td>@dr["file"]</td>
-                <td><a href="~/pages/Deletesong.cshtml?id=@dr["id"]" id="delete" class="fa fa-trash"></a></td>
+
+                <td><a href="~/pages/Deletesong.cshtml?id=@dr["id"]" id="deletes" class="fa fa-trash"></a></td>
+
             </tr>
         }
 
     </table>
+
     <br /><br />
-    
+
     <br /><br />
 
     <div id="createsong">
-        <a href="javascript: ShowDialog('inlog')">Voeg een Song toe</a>
+        <a href="javascript: ShowDialog('toevoegen')">Voeg een Song toe</a>
     </div>
 
     <div id="overlay"></div>
@@ -69,67 +83,98 @@
             <i id="closebtn" onclick="CloseDialog()" class="fas fa-window-close"></i>
         </div>
         <div id="cn_dialog"></div>
-        <div class="ft_dialog ">Footer</div>
-    
-    
+        <div class="ft_dialog "></div>
+        <br />
+    </div>
+    <div id="content">
+        <form method="POST" id="hallo">
+            <table>
+                <tr>
+                    <td>ID</td>
+                    <td><input type="text" name="id" size="25"></td>
+                </tr>
+                <tr>
+                    <td>Artiest</td>
+                    <td><input type="text" name="artist" size="25"></td>
+                </tr>
+                <tr>
+                    <td>Titel</td>
+                    <td><input type="text" name="title" size="25"></td>
+                </tr>
+                <tr>
+                    <td>Jaar</td>
+                    <td><input type="text" name="year" size="25"></td>
+                </tr>
+                <tr>
+                    <td>Genre</td>
+                    <td><input type="text" name="genre" size="25"></td>
+                </tr>
+                <tr>
+                    <td>Tijd</td>
+                    <td><input type="text" name="time" size="25"></td>
+                </tr>
+                <tr>
+                    <td>File</td>
+                    <td><input type="text" name="file" size="25"></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" name="submit" value="Save"></td>
+                </tr>
+            </table>
+        </form>
 
-        </div>
+        @if (IsPost)
+        {
+            DataRow dr = mySongMethodes.GetEmptyDataRow();
 
-<div id="content">
-    <form method="POST" id="hallo">
-        <table>
-            <tr>
-                <td>ID</td>
-                <td><input type="text" name="id" size="25"></td>
-            </tr>
-            <tr>
-                <td>Artiest</td>
-                <td><input type="text" name="artist" size="25"></td>
-            </tr>
-            <tr>
-                <td>Titel</td>
-                <td><input type="text" name="title" size="25"></td>
-            </tr>
-            <tr>
-                <td>Jaar</td>
-                <td><input type="text" name="year" size="25"></td>
-            </tr>
-            <tr>
-                <td>Genre</td>
-                <td><input type="text" name="genre" size="25"></td>
-            </tr>
-            <tr>
-                <td>Tijd</td>
-                <td><input type="text" name="time" size="25"></td>
-            </tr>
-            <tr>
-                <td>File</td>
-                <td><input type="text" name="file" size="25"></td>
-            </tr>
-            <tr>
-                <td><input type="submit" name="submit" value="Save"></td>
-            </tr>
-        </table>
-    </form>
+            dr[0] = Request.Form["id"];
+            dr[1] = Request.Form["artist"];
+            dr[2] = Request.Form["title"];
+            dr[3] = Request.Form["year"];
+            dr[4] = Request.Form["genre"];
+            dr[5] = Request.Form["time"];
+            dr[6] = Request.Form["file"];
 
-    @if (IsPost)
-    {
-        DataRow dr = mySongMethodes.GetEmptyDataRow();
+            mySongMethodes.CreateSong(dr, file);
+            Response.Redirect(@"~/index.cshtml");
+        }
 
-        dr[0] = Request.Form["id"];
-        dr[1] = Request.Form["artist"];
-        dr[2] = Request.Form["title"];
-        dr[3] = Request.Form["year"];
-        dr[4] = Request.Form["genre"];
-        dr[5] = Request.Form["time"];
-        dr[6] = Request.Form["file"];
 
-        mySongMethodes.CreateSong(dr, file);
-        Response.Redirect(@"~/index.cshtml");
-    }
-    </body>
-</html>
-</div>
-<script src="~/Scripts/Testdialog.js"></script>
+    </div>
+
+    <div id="delete">
+        <p>Weet nu zeker dat u dit wilt verwijderen?</p>
+        <br />
+        <form method="POST">
+            <table>
+                <tr>
+                    <td>Ja</td>
+                    <td><input type="radio" name="keuze" value="ja" checked></td>
+                </tr>
+                <tr>
+                    <td>Nee</td>
+                    <td><input type="radio" name="keuze" value="nee"></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" name="submit" value="Verder"></td>
+                </tr>
+            </table>
+        </form>
+        @if (IsPost)
+        {
+            if (Request.Form["keuze"] == "ja")
+            {
+                string id = Request.QueryString["id"];
+                mySongMethodes.DeleteSong(id, file);
+            }
+            Response.Redirect(@"~/index.cshtml");
+        }
+
+
+    </div>
+
+
+    <script src="~/Scripts/Testdialog.js"></script>
+</body>
 </html>
 

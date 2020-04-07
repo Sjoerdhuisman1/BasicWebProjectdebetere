@@ -7,34 +7,38 @@
         songMethodes mySongMethodes = Session["playlistClass"] as songMethodes;
         string file = Session["file"] as string;
     }
-
-
     <html>
-
     <head>
+
+        <link href="~/Content/bootstrap.css" rel="stylesheet" />
+        <script src="~/Scripts/bootstrap.js"></script>
+        <script src="~/Scripts/jquery-3.0.0.js"></script>
+        <link rel="stylesheet" type="text/css" href="~/Content/dialog.css" />
     </head>
     <body>
-
-        <p>Weet nu zeker dat u dit wilt verwijderen?</p>
-        <br />
-
-        <form method="POST">
-            <table>
-
-                <tr>
-                    <td>Ja</td>
-                    <td><input type="radio" name="keuze" value="ja" checked></td>
-                </tr>
-                <tr>
-                    <td>Nee</td>
-                    <td><input type="radio" name="keuze" value="nee"></td>
-                </tr>
-                <tr>
-                    <td><input type="submit" name="submit" value="Verder"></td>
-                </tr>
-            </table>
-        </form>
-
+        <div class="jumbotron jumbotron-fluid">
+            <div class="demooi">
+                <p>Weet nu zeker dat u dit wilt verwijderen?</p>
+                <br />
+                <div id="formdiv">
+                    <form method="POST">
+                        <table style="background-color: #e9ecef;">
+                            <tr>
+                                <td>Ja</td>
+                                <td><input type="radio" name="keuze" value="ja" checked></td>
+                            </tr>
+                            <tr>
+                                <td>Nee</td>
+                                <td> <input type="radio" name="keuze" value="nee"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="submit" class="btn btn-primary" name="submit" value="Verder"></td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        
         @if (IsPost)
         {
             if (Request.Form["keuze"] == "ja")
@@ -44,7 +48,7 @@
             }
             Response.Redirect(@"~/index.cshtml");
         }
-
+           
 
     </body>
 </html>

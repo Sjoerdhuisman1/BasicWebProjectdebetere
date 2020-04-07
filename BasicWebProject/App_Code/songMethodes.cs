@@ -5,8 +5,12 @@ using System.Web;
 using System.Data;
 using System.Media;
 
+
+
 namespace BasicWebProject.App_Code
 {
+
+
     public class songMethodes
     {
         DataSet ds = new DataSet("Playlist");
@@ -18,7 +22,6 @@ namespace BasicWebProject.App_Code
 
         public void DeleteSong(string id, string file)
         {
-           
             DataRow[] drArray = ds.Tables["songs"].Select("id = '" + id + "'");
             if (drArray != null && drArray.Length > 0)
             {
@@ -27,15 +30,15 @@ namespace BasicWebProject.App_Code
                 
             }
         }
+        
 
-      
+
+
         public void CreateSong(DataRow dataRow, string file)
         {
             ds.Tables["songs"].Rows.Add(dataRow);
             ds.WriteXml(HttpContext.Current.Server.MapPath(file));
         }
-
-        
 
         public DataSet GetAllSongs(string file)
         {
