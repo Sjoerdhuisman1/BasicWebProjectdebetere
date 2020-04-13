@@ -6,7 +6,18 @@ table{
     background-color: lightgray;
 }
 
-#content{
+.iframeVideo{
+    width: 350px;
+    height: 280px;
+    float: right;
+    
+    display:flex;
+    flex-direction: column;
+}
+
+
+
+#content {
     display: none;
 }
 

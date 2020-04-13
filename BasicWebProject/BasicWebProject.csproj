@@ -105,7 +105,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Content Include="Gerard Joling - Shangri La.mp4" />
-    <Content Include="Gerard-Joling-Shangri-La.wav">
+    <Content Include="Upload\De Toppers.mp3" />
+    <Content Include="Upload\Gordon.mp3" />
+    <Content Include="Upload\testmuziekje1.mp3" />
+    <Content Include="Upload\Gerard-Joling-Shangri-La.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -138,6 +141,8 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="pages\EditSong.cshtml" />
+    <Content Include="pages\Iframe.cshtml" />
     <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
     <Content Include="Scripts\jquery-3.0.0.js" />
     <Content Include="Scripts\jquery-3.0.0.min.js" />

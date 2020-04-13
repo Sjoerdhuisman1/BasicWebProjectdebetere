@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+@using System.Data;
+@using BasicWebProject.App_Code;
+@using System.Xml;
+@using System.Xml.Linq;
+
+
+
+@{
+    songMethodes mysongMethodes = new songMethodes();
+    string file = Session["file"] as string;
+    DataSet ds = mysongMethodes.GetAllSongs(file);
+    Session["playlistClass"] = mysongMethodes;
+    Session["file"] = file;
+    string id = Request.QueryString["id"];
+}
+<html>
+<head>
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.0.0.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+</head>
+<body>
+    <div>
+        <form method="POST">
+
+            <table class="table table-bordered">
+                <tr>
+                    <th>Id</th>
+                    <th>Artist</th>
+                    <th>Title</th>
+                    <th>Year</th>
+                    <th>Genre</th>
+                    <th>Time</th>
+                    <th>File</th>
+
+                    @foreach (DataRow dr in ds.Tables["songs"].Select("id = '" + id + "'"))
+                    {
+                <tr>
+                    <td>@dr["id"]</td>
+                    <td><input type="text" value="@dr["artist"]" name="artist"></td>
+                    <td><input type="text" value="@dr["title"]" name="title" /></td>
+                    <td><input type="text" value="@dr["year"]" name="year" /></td>
+                    <td><input type="text" value="@dr["genre"]" name="genre" /></td>
+                    <td><input type="text" value="@dr["time"]" name="time" /></td>
+                    <td><input type="text" value="@dr["file"]" name="file" /></td>
+                </tr>
+                }
+
+                    <input type="submit" name="keuze" value="UPDATE" />
+                </table>
+            </form>
+
+            @if (IsPost)
+            {
+                XmlDocument xmlDoc = new XmlDocument();
+                string load = Server.MapPath(@"~/App_Data/Playlist.xml");
+                xmlDoc.Load(load);
+
+                //select
+                XmlNode artist = xmlDoc.SelectSingleNode("Playlist/songs[id='" + id + "']/artist");
+                XmlNode title = xmlDoc.SelectSingleNode("Playlist/songs[id='" + id + "']/title");
+                XmlNode year = xmlDoc.SelectSingleNode("Playlist/songs[id='" + id + "']/year");
+                XmlNode genre = xmlDoc.SelectSingleNode("Playlist/songs[id='" + id + "']/genre");
+                XmlNode time = xmlDoc.SelectSingleNode("Playlist/songs[id='" + id + "']/time");
+                XmlNode music_file = xmlDoc.SelectSingleNode("Playlist/songs[id='" + id + "']/file");
+
+                artist.InnerText = Request.Form["artist"];
+                title.InnerText = Request.Form["title"];
+                year.InnerText = Request.Form["year"];
+                genre.InnerText = Request.Form["genre"];
+                time.InnerText = Request.Form["time"];
+                music_file.InnerText = Request.Form["file"];
+
+
+                xmlDoc.Save(load);
+
+                Response.Redirect(@"~/index.cshtml");
+
+            }
+        </div>
+    </body>
+</html>
+

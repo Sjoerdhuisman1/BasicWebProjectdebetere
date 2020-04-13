@@ -2,7 +2,7 @@
 
 @using System.Data;
 @using BasicWebProject.App_Code;
-@using System.Media
+@using System.Media;
 
 
 @{
@@ -11,15 +11,6 @@
     DataSet ds = mySongMethodes.GetAllSongs(file);
     Session["playlistClass"] = mySongMethodes;
     Session["file"] = file;
-
-
-    SoundPlayer player = new SoundPlayer();
-    player.SoundLocation = AppDomain.CurrentDomain.BaseDirectory + "\\Gerard-Joling-Shangri-La.wav";
-    player.Play();
-
-    
-   
-
 }
 
 <html>
@@ -28,10 +19,10 @@
     <script src="~/Scripts/bootstrap.js"></script>
     <script src="~/Scripts/jquery-3.0.0.js"></script>
     <script src="https://kit.fontawesome.com/f19f1abdd8.js" crossorigin="anonymous"></script>
-
+    <meta charset="utf-8" />
     <link rel="stylesheet" type="text/css" href="~/Content/dialog.css" />
 </head>
-<body>
+<body id="body">
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
             <h1 class="display-4">C# Muziek Project</h1>
@@ -47,7 +38,9 @@
             <th>Genre</th>
             <th>Time</th>
             <th>File</th>
+            <th>Edit</th>
             <th>Delete</th>
+            <th>Play</th>
         </tr>
         @foreach (DataRow dr in ds.Tables["songs"].Rows)
         {
@@ -59,32 +52,35 @@
                 <td>@dr["genre"]</td>
                 <td>@dr["time"]</td>
                 <td>@dr["file"]</td>
-
+                <td><a href="~/pages/EditSong.cshtml?id=@dr["id"]"><i class="fa fa-edit"></i></a></td>
                 <td><a href="~/pages/Deletesong.cshtml?id=@dr["id"]" id="deletes" class="fa fa-trash"></a></td>
 
+                <td><i class="far fa-play-circle" href="" onclick="document.getElementById('@dr["id"]').play();document.getElementById('@dr["id"]a').style.display = 'block' "></i><audio id="@dr["id"]" src="~/Upload/@dr["file"]" target="iframe">
+                <td><i id="@dr["id"]a" style="display:none;" class="far fa-pause-circle" onclick="document.getElementById('@dr["id"]').pause(); document.getElementById('@dr["id"]a').style.display= 'none' "></i></td>
+                </audio></td>
             </tr>
+
+          
         }
-
     </table>
+    
 
-    <br /><br />
 
-    <br /><br />
+
+    <br /><br /><br /><br />
+
 
     <div id="createsong">
         <a href="javascript: ShowDialog('toevoegen')">Voeg een Song toe</a>
     </div>
-
     <div id="overlay"></div>
     <div id="dialog" class="dialog">
         <div class="hd_dialog ">
             <div id="hd_dialog_title"></div>
-
             <i id="closebtn" onclick="CloseDialog()" class="fas fa-window-close"></i>
         </div>
         <div id="cn_dialog"></div>
-        <div class="ft_dialog "></div>
-        <br />
+        <div class="ft_dialog "></div><br />
     </div>
     <div id="content">
         <form method="POST" id="hallo">
@@ -122,7 +118,6 @@
                 </tr>
             </table>
         </form>
-
         @if (IsPost)
         {
             DataRow dr = mySongMethodes.GetEmptyDataRow();
@@ -138,42 +133,7 @@
             mySongMethodes.CreateSong(dr, file);
             Response.Redirect(@"~/index.cshtml");
         }
-
-
     </div>
-
-    <div id="delete">
-        <p>Weet nu zeker dat u dit wilt verwijderen?</p>
-        <br />
-        <form method="POST">
-            <table>
-                <tr>
-                    <td>Ja</td>
-                    <td><input type="radio" name="keuze" value="ja" checked></td>
-                </tr>
-                <tr>
-                    <td>Nee</td>
-                    <td><input type="radio" name="keuze" value="nee"></td>
-                </tr>
-                <tr>
-                    <td><input type="submit" name="submit" value="Verder"></td>
-                </tr>
-            </table>
-        </form>
-        @if (IsPost)
-        {
-            if (Request.Form["keuze"] == "ja")
-            {
-                string id = Request.QueryString["id"];
-                mySongMethodes.DeleteSong(id, file);
-            }
-            Response.Redirect(@"~/index.cshtml");
-        }
-
-
-    </div>
-
-
     <script src="~/Scripts/Testdialog.js"></script>
 </body>
 </html>

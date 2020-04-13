@@ -1,13 +1,39 @@
 <?xml version="1.0" standalone="yes"?>
 <Playlist>
   <songs>
-    <id>e</id>
-    <artist>e</artist>
-    <title>e</title>
-    <year>e</year>
-    <genre>e</genre>
-    <time>e</time>
-    <file>e</file>
+    <id>1</id>
+    <artist>De Toppers</artist>
+    <title>.</title>
+    <year>1865</year>
+    <genre>Leuk</genre>
+    <time>69:420</time>
+    <file>testmuziekje1.mp3</file>
   </songs>
-  
+  <songs>
+    <id>2</id>
+    <artist>Gerard</artist>
+    <title>Shangri La</title>
+    <year>1998</year>
+    <genre>leuk</genre>
+    <time>deze tijd</time>
+    <file>Gerard-Joling-Shangri-La.wav</file>
+  </songs>
+  <songs>
+    <id>3</id>
+    <artist>is</artist>
+    <title>echt</title>
+    <year>super</year>
+    <genre>gewel</genre>
+    <time>dig</time>
+    <file>De Toppers.mp3</file>
+  </songs>
+  <songs>
+    <id>4</id>
+    <artist>dit</artist>
+    <title>is</title>
+    <year>echt</year>
+    <genre>helemaal</genre>
+    <time>geweldig</time>
+    <file>Gordon.mp3</file>
+  </songs>
 </Playlist>

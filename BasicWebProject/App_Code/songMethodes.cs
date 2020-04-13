@@ -27,10 +27,10 @@ namespace BasicWebProject.App_Code
             {
                 drArray[0].Delete();
                 ds.WriteXml(HttpContext.Current.Server.MapPath(file));
-                
+
             }
         }
-        
+
 
 
 
@@ -42,7 +42,7 @@ namespace BasicWebProject.App_Code
 
         public DataSet GetAllSongs(string file)
         {
-          //  DataSet ds = new DataSet("Playlist");
+            //  DataSet ds = new DataSet("Playlist");
 
             DataTable dtSongs = new DataTable("songs");
 
@@ -63,10 +63,11 @@ namespace BasicWebProject.App_Code
             dtSongs.Columns.Add(dcFile);
             ds.Tables.Add(dtSongs);
 
-//ds.ReadXml(file);
+
 
             ds.ReadXml(HttpContext.Current.Server.MapPath(file));
-            return ds;
+             return ds;
+
         }
     }
 }
