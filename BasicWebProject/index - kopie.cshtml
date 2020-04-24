@@ -24,7 +24,15 @@
 </head>
 
 <body id="body">
-
+    <div id="overlay"></div>
+    <div id="dialog" class="dialog">
+        <div class="hd_dialog ">
+            <div id="hd_dialog_title"></div>
+            <i id="closebtn" onclick="CloseDialog()" class="fas fa-window-close"></i>
+        </div>
+        <div id="cn_dialog"></div>
+        <div class="ft_dialog "></div><br />
+    </div>
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
             <h1 class="display-4">C# Muziek Project</h1>
@@ -34,15 +42,6 @@
     <table class="table table-bordered ">
         <tr>
             <th>Id</th>
-            <div id="overlay"></div>
-            <div id="dialog" class="dialog">
-                <div class="hd_dialog ">
-                    <div id="hd_dialog_title"></div>
-                    <i id="closebtn" onclick="CloseDialog()" class="fas fa-window-close"></i>
-                </div>
-                <div id="cn_dialog"></div>
-                <div class="ft_dialog "></div><br />
-            </div>
             <th>Artist</th>
             <th>Title</th>
             <th>Year</th>
