@@ -1,0 +1,80 @@
+﻿@using System.Data;
+@using BasicWebProject.App_Code;
+@using Newtonsoft.Json.Linq;
+
+@{
+    var jsonInput = File.ReadAllText(HttpContext.Current.Server.MapPath(@"~\App_Data\playlist.json"));
+   // Songs songs = Newtonsoft.Json.JsonConvert.DeserializeObject<Songs>
+    Songs songs = Newtonsoft.Json.JsonConvert.DeserializeObject<Songs>(jsonInput);
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>JSON</title>
+
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/jquery-3.0.0.js"></script>
+    <script src="https://kit.fontawesome.com/f19f1abdd8.js" crossorigin="anonymous"></script>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="~/css/dialog.css" />
+</head>
+<body>
+
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">C# JSON Muziek project</h1>
+            <p class="lead">Dit is het JSON gedeelte van ons project. Je kan hiet liedjes toevoegen, wijzigen, verwijderen en afspelen</p>
+        </div>
+    </div>
+
+    <table class="table table-bordered">
+        <tr>
+            <th>Id</th>
+            <th>Artist</th>
+            <th>Title</th>
+            <th>Year</th>
+            <th>Gerne</th>
+            <th>Time</th>
+            <th>File</th>
+            <th>Edit</th>
+            <th>Delete</th>
+            <th>Play</th>
+            <th>Pause</th>
+        </tr>
+        @foreach (Song song in songs.songs)
+                {
+        <tr>
+            <td>@song.id</td>
+            <td>@song.artist</td>
+            <td>@song.title</td>
+            <td>@song.genre</td>
+            <td>@song.year</td>
+            <td>@song.time</td>
+            <td>@song.file</td>
+            <td>
+                <a href="~/Pages/EditsongJson.cshtml"><i class="fa fa-edit"></i></a>
+            </td>
+            <td>
+                <a href="~/Pages/DeletesongJson.cshtml" id="deletes" class="fa fa-trash"></a>
+            </td>
+
+            <td>
+                <i class="far fa-play-circle" href="" onclick="document.getElementById('@song.id').play();document.getElementById('@song.id,a').style.display = 'block' "> </i>
+                <audio id="@song.id" src="~/Upload/@song.file" target="iframe"> </audio>
+            </td>
+            <td>
+                <i id="@song.id,a" style="display:none;" class="far fa-pause-circle" onclick="document.getElementById('@song.id').pause(); document.getElementById('@song.id,a').style.display= 'none' "></i>
+            </td>
+        </tr>
+        }
+    </table> 
+
+
+    <a id="createsong" href="~/index.cshtml">Klik hier om naar het XML gedeelte te gaan</a>
+</body>
+</html>
+
+
